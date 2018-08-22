@@ -52985,13 +52985,20 @@ var guestRoutes = [{
 }];
 
 
-__WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].dispatch('user/storeCurrentUser', window.currentuserfromserver);
-var currentUser = __WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].getters["user/getCurrentUser"];
-var roleRoute = currentUser.is_admin === 1 ? adminRoutes : guestRoutes;
 
-var routes = [].concat(commonRoutes, roleRoute);
+var routes = [
+    // ...commonRoutes,
+    // ...adminRoutes,
+    // ...guestRoutes,
 
-console.log(currentUser);
+];
+
+if (window.currentuserfromserver) {
+    __WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].dispatch('user/storeCurrentUser', window.currentuserfromserver);
+    var currentUser = __WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].getters["user/getCurrentUser"];
+    var roleRoute = currentUser.is_admin === 1 ? adminRoutes : guestRoutes;
+    routes = [].concat(commonRoutes, roleRoute);
+}
 
 /* harmony default export */ __webpack_exports__["a"] = (routes);
 

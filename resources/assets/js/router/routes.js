@@ -40,17 +40,23 @@ const guestRoutes = [
 ];
 
 import store from '../store'
-store.dispatch('user/storeCurrentUser',window.currentuserfromserver);
-const currentUser = store.getters["user/getCurrentUser"];
-const roleRoute = currentUser.is_admin === 1 ? adminRoutes : guestRoutes;
 
-const routes = [
-    ...commonRoutes,
-    ...roleRoute,
+let routes = [
+    // ...commonRoutes,
+    // ...adminRoutes,
+    // ...guestRoutes,
 
 ];
 
-console.log(currentUser);
+if(window.currentuserfromserver){
+    store.dispatch('user/storeCurrentUser',window.currentuserfromserver);
+    const currentUser = store.getters["user/getCurrentUser"];
+    const roleRoute = currentUser.is_admin === 1 ? adminRoutes : guestRoutes;
+    routes = [
+        ...commonRoutes,
+        ...roleRoute,
 
+    ];
+}
 
 export default routes;
