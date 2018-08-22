@@ -5,23 +5,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex';
-
     export default {
-        data() {
-            return {
-                errors: []
-            }
-        },
-        computed: {
-            ...mapGetters({
-                getCurrentUser: 'user/getCurrentUser',
-            })
-        },
-        methods: {
-            ...mapActions({
-                storeCurrentUser: 'user/storeCurrentUser',
-            })
-        }
+        //
     }
 </script>

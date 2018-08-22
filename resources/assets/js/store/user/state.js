@@ -2,8 +2,7 @@ const state = {
     users:[
         {
             id:'',
-            firstname:'',
-            lastname:'',
+            name:'',
             category:'1', //1 = teacher, 2 = guest
             email:'',
             phone:'',
@@ -13,8 +12,7 @@ const state = {
     ],
     currentUser:{
         id:'',
-        firstname:'',
-        lastname:'',
+        name:'',
         category:'1', //1 = teacher, 2 = guest
         email:'',
         phone:'',

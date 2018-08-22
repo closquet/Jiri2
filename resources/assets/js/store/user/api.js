@@ -60,6 +60,14 @@ export const getAllUsers = () => {
 
 //if logged
 export const getCurrentUser = () => {
+    this.$http.get('/current').then(response => {
+
+        // get body data
+        this.someData = response.body;
+
+    }, response => {
+        // error callback
+    });
     return {
         id: '3',
         name:'Billy Dumant',

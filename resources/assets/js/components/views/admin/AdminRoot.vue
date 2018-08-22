@@ -6,13 +6,13 @@
 </template>
 
 <script>
-    import navigation from './navigation/Navigation';
-    import router from './navigation/router'
+    import navigation from '../common/navigation/Navigation';
+    import router from '../../../router/router';
 
     export default {
         router,
         components:{
             navigation
-        }
+        },
     }
 </script>
