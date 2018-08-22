@@ -1,28 +1,27 @@
 const state = {
     users:[
         {
-            id:null,
-            firstname:null,
-            lastname:null,
-            category:null, //1 = teacher, 2 = guest
-            email:null,
-            phone:null,
-            isAdmin:null,
-            available:null
-        },
-        {
-            id:null,
-            firstname:null,
-            lastname:null,
-            category:null, //1 = teacher, 2 = guest
-            email:null,
-            phone:null,
-            isAdmin:null,
-            available:null
+            id:'',
+            firstname:'',
+            lastname:'',
+            category:'1', //1 = teacher, 2 = guest
+            email:'',
+            phone:'',
+            isAdmin:'0',
+            isAvailable:'0'
         },
     ],
+    currentUser:{
+        id:'',
+        firstname:'',
+        lastname:'',
+        category:'1', //1 = teacher, 2 = guest
+        email:'',
+        phone:'',
+        isAdmin:'0',
+        isAvailable:'0'
+    },
     // students:[],
-    // currentUser:{},
     // projectsTypes:[],
     // studentsProjects:[]
     // studentsProjectsScores:[]

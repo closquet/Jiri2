@@ -5,10 +5,13 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
 
-import AdminRoot from './components/AdminRoot.vue';
-import GuestRoot from './components/GuestRoot.vue';
+import store from './store'
+
+import AdminRoot from './components/views/admin/AdminRoot.vue';
+import GuestRoot from './components/views/guest/GuestRoot.vue';
 
 const app = new Vue({
+    store,
     components:{
         AdminRoot,
         GuestRoot,

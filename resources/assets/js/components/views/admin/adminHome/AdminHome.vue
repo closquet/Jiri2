@@ -1,0 +1,13 @@
+<template>
+    <div class="site-content">
+        <h1>admin home</h1>
+    </div>
+</template>
+
+<script>
+    export default {
+        components:{
+            //
+        }
+    }
+</script>

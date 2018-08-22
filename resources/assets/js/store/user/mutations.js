@@ -1,6 +1,6 @@
 const mutations = {
-    ADD_USER: (state, userToAdd) => {
-        state.users.push(userToAdd);
+    ADD_USER: (state, {name, email, phone, category, isAvailable, isAdmin}) => {
+        state.users.push({name, email, phone, category, isAvailable, isAdmin});
     },
     STORE_CURRENT_USER: (state, currentUser) => {
         state.currentUser = currentUser;
@@ -9,10 +9,10 @@ const mutations = {
         state.users = users;
     },
     DISABLE_USER: (state, userId) => {
-        state.users.filter(user => user.id === userId)[0].available = 0
+        state.users.filter(user => user.id === userId)[0].isAvailable = 0
     },
     ENABLE_USER: (state, userId) => {
-        state.users.filter(user => user.id === userId)[0].available = 1
+        state.users.filter(user => user.id === userId)[0].isAvailable = 1
     },
     UPDATE_USER: (state, newUserContent) => {
         state.users.filter(user => user.id === newUserContent.id)[0] = newUserContent;
