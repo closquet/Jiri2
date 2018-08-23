@@ -1,9 +1,7 @@
 require('./bootstrap');
 
-import Vue from 'vue'
-import VueResource from 'vue-resource'
+import Vue from 'vue';
 
-Vue.use(VueResource);
 
 import store from './store'
 
