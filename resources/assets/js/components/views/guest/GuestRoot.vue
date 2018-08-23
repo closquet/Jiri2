@@ -13,6 +13,14 @@
         router,
         components:{
             navigation
+        },
+        mounted(){
+            const refreshSession = setInterval(()=>{
+                axios('/refresh');
+            }, 3000000); // refresh session after 50 minutes.
+        },
+        destroyed(){
+            clearInterval(refreshSession);
         }
     }
 </script>
