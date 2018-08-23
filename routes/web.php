@@ -18,7 +18,7 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
 
 Route::group( [ 'middleware' => 'auth' ], function (){
 	
-	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/', function () {return redirect('/home');})->name('root');
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/refresh', 'SessionController@refresh')->name('refresh');
 	
