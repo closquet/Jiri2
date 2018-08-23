@@ -29,3 +29,7 @@ Route::group( [ 'middleware' => 'admin' ], function (){
 //	Route::get('/user', 'HomeController@index')->name('home');
 	
 });
+
+
+
+Route::fallback(function () {return redirect('/home');});
