@@ -12,7 +12,7 @@
 */
 
 Auth::routes();
-Route::get('/register', 'HomeController@index')->name('register');
+Route::get('/register', function () {return redirect('/home');})->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
 
