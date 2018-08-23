@@ -1,6 +1,4 @@
-<?php
-$currentuserfromserver = json_encode( auth()->user());
-?>
+<?php $currentuserfromserver = json_encode( $user); ?>
 <script defer>
     window.currentuserfromserver = <?= $currentuserfromserver ?>;
 </script>
