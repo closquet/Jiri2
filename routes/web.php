@@ -13,6 +13,7 @@
 
 Auth::routes();
 Route::get('/register', 'HomeController@index')->name('register');
+Route::get('/logout', 'AuthController@logout')->name('logout');
 
 
 Route::group( [ 'middleware' => 'auth' ], function (){
