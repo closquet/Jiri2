@@ -1,6 +1,6 @@
 <template>
     <ul class="site-content">
-        <li><router-link to="/">home</router-link></li>
+        <li><router-link to="/home">home</router-link></li>
         <li><router-link to="/testc">common link</router-link></li>
 
         <li v-if="currentUser.is_admin"><router-link to="/testa">admin link</router-link></li>

@@ -13,7 +13,7 @@ import AdminHome from '../components/views/admin/adminHome/AdminHome';
 
 const adminRoutes = [
     {
-        path: '/',
+        path: '/home',
         component: AdminHome
     },
     {
@@ -29,7 +29,7 @@ import GuestHome from '../components/views/guest/guestHome/GuestHome';
 
 const guestRoutes = [
     {
-        path: '/',
+        path: '/home',
             component: GuestHome
     },
     {
