@@ -1,0 +1,10 @@
+.login-container{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  & > .row{
+    max-width: 50rem;
+    flex: 1;
+  }
+}

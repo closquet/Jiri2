@@ -48709,6 +48709,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -51480,7 +51487,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("test common")])])
+    return _c("div", { staticClass: "container site-content" }, [
+      _c("h1", [_vm._v("test common")])
+    ])
   }
 ]
 render._withStripped = true
@@ -51554,7 +51563,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("test admin")])])
+    return _c("div", { staticClass: "container site-content" }, [
+      _c("h1", [_vm._v("test admin")])
+    ])
   }
 ]
 render._withStripped = true
@@ -51645,7 +51656,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "site-content" }, [
+    return _c("div", { staticClass: "container site-content" }, [
       _c("h1", [_vm._v("admin home")])
     ])
   }
@@ -51721,7 +51732,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("test guest")])])
+    return _c("div", { staticClass: "container site-content" }, [
+      _c("h1", [_vm._v("test guest")])
+    ])
   }
 ]
 render._withStripped = true
@@ -51812,7 +51825,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "site-content" }, [
+    return _c("div", { staticClass: "container site-content" }, [
       _c("h1", [_vm._v("guest home")])
     ])
   }
@@ -51834,42 +51847,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("ul", { staticClass: "site-content" }, [
+  return _c("div", { staticClass: "nav-scroller bg-white shadow-sm" }, [
     _c(
-      "li",
-      [_c("router-link", { attrs: { to: "/home" } }, [_vm._v("home")])],
+      "nav",
+      {
+        staticClass: "container nav nav-underline",
+        attrs: { "aria-labelledby": "main-nav-title", role: "navigation" }
+      },
+      [
+        _c(
+          "h2",
+          {
+            staticClass: "sr-only",
+            attrs: { id: "main-nav-title", role: "heading", "aria-level": "2" }
+          },
+          [_vm._v("\n            Menu Principal\n        ")]
+        ),
+        _vm._v(" "),
+        _c("router-link", { staticClass: "nav-link", attrs: { to: "/home" } }, [
+          _vm._v("home")
+        ]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "nav-link", attrs: { to: "/testc" } },
+          [_vm._v("common link")]
+        ),
+        _vm._v(" "),
+        _vm.currentUser.is_admin
+          ? _c(
+              "router-link",
+              { staticClass: "nav-link", attrs: { to: "/testa" } },
+              [_vm._v("testa")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.currentUser.is_admin
+          ? _c(
+              "router-link",
+              { staticClass: "nav-link", attrs: { to: "/testg" } },
+              [_vm._v("testg")]
+            )
+          : _vm._e()
+      ],
       1
-    ),
-    _vm._v(" "),
-    _c(
-      "li",
-      [_c("router-link", { attrs: { to: "/testc" } }, [_vm._v("common link")])],
-      1
-    ),
-    _vm._v(" "),
-    _vm.currentUser.is_admin
-      ? _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: "/testa" } }, [
-              _vm._v("admin link")
-            ])
-          ],
-          1
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.currentUser.is_admin
-      ? _c(
-          "li",
-          [
-            _c("router-link", { attrs: { to: "/testg" } }, [
-              _vm._v("guest link")
-            ])
-          ],
-          1
-        )
-      : _vm._e()
+    )
   ])
 }
 var staticRenderFns = []

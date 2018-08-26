@@ -1,0 +1,11 @@
+.site-title{
+  a{
+    color: #fff;
+    border-bottom: 1px  solid transparent;
+
+    &:focus, &:hover{
+      border-color: #fff;
+      text-decoration: none;
+    }
+  }
+}

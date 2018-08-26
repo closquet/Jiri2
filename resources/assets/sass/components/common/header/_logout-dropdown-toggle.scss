@@ -1,0 +1,20 @@
+.logout-dropdown-toggle,
+.btn-secondary.logout-dropdown-toggle:not(:disabled):not(.disabled):active,
+.btn-secondary.logout-dropdown-toggle:not(:disabled):not(.disabled).active,
+.show > .btn-secondary.dropdown-toggle.logout-dropdown-toggle{
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px  solid transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-secondary.logout-dropdown-toggle:hover,
+.btn-secondary.logout-dropdown-toggle:focus{
+  box-shadow: none;
+  background-color: transparent;
+  border-color: #fff;
+  text-decoration: none;
+}

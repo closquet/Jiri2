@@ -1,5 +1,5 @@
 <template>
-    <div class="site-content">
+    <div class="container site-content">
         <h1>guest home</h1>
     </div>
 </template>

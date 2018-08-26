@@ -1,11 +1,18 @@
 <template>
-    <ul class="site-content">
-        <li><router-link to="/home">home</router-link></li>
-        <li><router-link to="/testc">common link</router-link></li>
+    <div class="nav-scroller bg-white shadow-sm">
+        <nav aria-labelledby="main-nav-title" role="navigation" class="container nav nav-underline">
+            <h2 id="main-nav-title" role="heading" aria-level="2" class="sr-only">
+                Menu Principal
+            </h2>
 
-        <li v-if="currentUser.is_admin"><router-link to="/testa">admin link</router-link></li>
-        <li v-if="!currentUser.is_admin"><router-link to="/testg">guest link</router-link></li>
-    </ul>
+            <router-link class="nav-link" to="/home">home</router-link>
+            <router-link class="nav-link" to="/testc">common link</router-link>
+
+            <router-link v-if="currentUser.is_admin" class="nav-link" to="/testa">testa</router-link>
+
+            <router-link v-if="!currentUser.is_admin" class="nav-link" to="/testg">testg</router-link>
+        </nav>
+    </div>
 </template>
 
 <script>

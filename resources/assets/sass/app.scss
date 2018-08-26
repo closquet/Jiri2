@@ -1,14 +1,27 @@
-
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Bootstrap 4
+@import "~bootstrap/scss/bootstrap";
+@import 'ie10-viewport-bug-workaround.css';
 
 // Variables
-@import 'variables';
+@import 'settings/core';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+//generic
+
+
+//base
+@import "base/page";
+@import "base/main";
+@import "base/root";
+
+
+//components
+@import "components/common/header/site-title";
+@import "components/common/header/logout-dropdown-toggle";
+@import "components/common/header/logout-dropdown-menu";
+@import "components/common/main/site-content";
+@import "components/common/footer/site-footer";
+@import "components/common/footer/site-footer__copy-right";
+
+@import "components/login/login-root";
+@import "components/login/login-container";

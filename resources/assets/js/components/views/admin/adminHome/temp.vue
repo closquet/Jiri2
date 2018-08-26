@@ -1,5 +1,5 @@
 <template>
-    <div class="site-content">
+    <div class="container site-content">
         <h1>
             Bonjour {{getCurrentUser.name}} (admin)
         </h1>

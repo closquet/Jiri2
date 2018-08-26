@@ -4,7 +4,6 @@ namespace Jiri\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Jiri\User;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-	    $user = Auth::user();
+	    $user = auth()->user()->toArray();
         return view('home', [ 'user' => $user ]);
     }
 }
