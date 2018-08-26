@@ -1,64 +1,9 @@
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-Italic.ttf');
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-Bold.ttf');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-BoldItalic.ttf');
-  font-weight: bold;
-  font-style: italic;
-}
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-Medium.ttf');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Archivo-Narrow';
-  src: url('../fonts/Archivo_Narrow/ArchivoNarrow-MediumItalic.ttf');
-  font-weight: 500;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Abril-Fatface';
-  src: url('../fonts/Abril_Fatface/AbrilFatface-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Patua-One';
-  src: url('../fonts/Patua_One/PatuaOne-Regular.ttf');
-  font-weight: normal;
-  font-style: normal;
-}
-
 $global-font-size: 16px;
 $global-line-height: 1.5;
 
 $site-title-font-size: 1.875rem; //30
 $titles-font-size-h2: 1.5rem;   //24
 $titles-font-size-h3: 1.25rem;  //20
-
-$site-title-font: 'Abril-Fatface';
-$titles-font: 'Patua-One';
-$labour-font: 'Archivo-Narrow';
 
 $spacing-xxs: 0.625rem; //10
 $spacing-xs: 0.9375rem; //15
