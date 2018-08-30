@@ -27,14 +27,17 @@ const actions = {
     },
 
 
+    enableUser: ({commit}, userId) => {
+        api.enableUser( userId,  (status) => {
+            if(status === 200){
+                commit('ENABLE_USER', userId);
+            }else{
+                console.log('Error: ' + status);
+            }
+        });
     },
     },
     },
-    enableUser: (store, userId) => {
-        const response = api.enableUser(userId);
-        if(response){
-            store.commit('ENABLE_USER', userId);
-        }
     },
     updateUser: (store, newUserContent) => {
         const response = api.updateUser(newUserContent);
