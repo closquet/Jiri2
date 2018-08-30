@@ -1,8 +1,4 @@
 const mutations = {
-    ADD_USER: (state, {name, email, phone, category, isAvailable, isAdmin}) => {
-        state.users.push({name, email, phone, category, isAvailable, isAdmin});
-    },
-    STORE_CURRENT_USER: (state, currentUser) => {
         state.currentUser = currentUser;
     },
     STORE_ALL_USERS: (state, users) => {
@@ -17,5 +13,9 @@ const mutations = {
     UPDATE_USER: (state, newUserContent) => {
         state.users.filter(user => user.id === newUserContent.id)[0] = newUserContent;
     }
+    ADD_USER: (state, {name, email, phone, category, isAvailable, isAdmin}) => {
+        state.users.push({name, email, phone, category, isAvailable, isAdmin});
+    },
+
 };
 export default mutations;
