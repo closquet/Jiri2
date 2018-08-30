@@ -1,61 +1,28 @@
 //if logged and is admin
-export const getAllUsers = () => {
-    return [
-        {
-            id: '0',
-            name:'John Doe',
-            category:'2', //1 = teacher, 2 = guest
-            email:'john@mail.be',
-            phone:'+32495000001',
-            isAdmin:0,
-            isAvailable:0
-        },
-        {
-            id: '1',
-            name:'Dominique Vilain',
-            category:'1', //1 = teacher, 2 = guest
-            email:'exemple@mail.be',
-            phone:'+32495000002',
-            isAdmin:1,
-            isAvailable:1
-        },
-        {
-            id: '2',
-            name:'Myriam Dupont',
-            category:'1', //1 = teacher, 2 = guest
-            email:'myriam@mail.be',
-            phone:'+32495000003',
-            isAdmin:1,
-            isAvailable:1
-        },
-        {
-            id: '3',
-            name:'Billy Dumant',
-            category:'1', //1 = teacher, 2 = guest
-            email:'Billy@mail.be',
-            phone:'+32495000004',
-            isAdmin:1,
-            isAvailable:0
-        },
-        {
-            id: '4',
-            name:'Sophie Palak',
-            category:'1', //1 = teacher, 2 = guest
-            email:'Sophie@mail.be',
-            phone:'+32495000005',
-            isAdmin:0,
-            isAvailable:0
-        },
-        {
-            id: '5',
-            name:'Marine Lavoie',
-            category:'1', //1 = teacher, 2 = guest
-            email:'Marine@mail.be',
-            phone:'+32495000006',
-            isAdmin:0,
-            isAvailable:1
+export const getAllUsers = (cb) => {
+    axios.get('/users')
+    .catch( error => {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+        } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
         }
-    ];
+        console.log(error.config);
+        cb(error);
+    })
+    .then( axiosResponse => {
+        cb(axiosResponse.data);
+    });
 };
 
 //if logged
