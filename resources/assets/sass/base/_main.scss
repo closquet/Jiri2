@@ -1,6 +1,6 @@
 main{
-  //padding-bottom: 50px;
-  //padding-top: 20px;
-  flex: 1;
+  flex-grow: 1;
   display: flex;
+  min-height: 100%;
+  margin-bottom: 50px;
 }
