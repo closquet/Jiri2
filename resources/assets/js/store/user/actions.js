@@ -9,12 +9,13 @@ const actions = {
     storeCurrentUser: ({commit}, currentUser) => {
         commit('STORE_CURRENT_USER', currentUser);
     },
+
+    storeAllUsers: ({commit}) => {
+        api.getAllUsers( users => {
+            commit('STORE_ALL_USERS', users);
+        });
     },
-    storeAllUsers: (store) => {
-        const users = api.getAllUsers();
-        if(users){
-            store.commit('STORE_ALL_USERS', users);
-        }
+    },
     },
     disableUser: (store, userId) => {
         const response = api.disableUser(userId);
