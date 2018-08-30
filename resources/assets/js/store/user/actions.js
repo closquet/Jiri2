@@ -47,7 +47,7 @@ const actions = {
     },
 
     addUser: ({commit}, userContent) => {
-        store.dispatch('user/editUserFormStatus','loading');
+        store.dispatch('global/editFormStatus','loading');
         api.addUser( userContent,  (status) => {
             if(status === 200){
                 commit('ADD_USER', userContent);
