@@ -1,11 +1,6 @@
 import * as api from './api'
 
 const actions = {
-    addUser: (store, userToAdd) => {
-        const response = api.addUser(userToAdd);
-        if(response){
-            store.commit('ADD_USER',userToAdd);
-        }
     storeCurrentUser: ({commit}, currentUser) => {
         commit('STORE_CURRENT_USER', currentUser);
     },
@@ -50,6 +45,18 @@ const actions = {
         });
     },
     },
+
+    addUser: ({commit}, userContent) => {
+        store.dispatch('user/editUserFormStatus','loading');
+        api.addUser( userContent,  (status) => {
+            if(status === 200){
+                commit('ADD_USER', userContent);
+                store.dispatch('user/editUserFormStatus','success');
+            }else{
+                console.log('Error: ' + status);
+                store.dispatch('user/editUserFormStatus','error');
+            }
+        });
     },
 
 };
