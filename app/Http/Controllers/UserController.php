@@ -122,15 +122,30 @@ class UserController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		$validator = Validator::make($request->all(), [
+			'name' => 'required|max:20',
+			'email' => 'required|email',
+			'phone' => 'nullable',
+			'category' => 'required|in:0,1,2',
+			'password' => 'required|confirmed|min:6',
+			'is_available' => 'required|boolean',
+			'is_admin' => 'required|boolean',
+		]);
+		
+		if ($validator->fails()) {
+			return response($validator->errors(), 304);
+		}
+		
 		$user = new User();
 		$user->name = $request->name;
 		$user->email = $request->email;
 		$user->phone = $request->phone;
 		$user->category = $request->category;
+		$user->password = Hash::make($request->password);
 		$user->is_available = $request->is_available;
 		$user->is_admin = $request->is_admin;
 		$user->save();
-		return response('user ' . $user->name . ' saved in the database', 200);
+		return response('user ' . $user->name . ' stored in the database', 200);
 	}
 
     /**
