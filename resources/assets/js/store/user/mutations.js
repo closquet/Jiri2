@@ -15,8 +15,6 @@ const mutations = {
         state.users.find(user => user.id === userId).is_available = 1
     },
 
-    },
-
     UPDATE_USER: (state, newUserContent) => {
         state.users.filter(user => user.id === newUserContent.id)[0] = newUserContent;
     }
