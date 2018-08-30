@@ -2,10 +2,12 @@ import Vuex from 'vuex';
 import Vue from "vue";
 Vue.use(Vuex);
 
-import user from './user'
+import global from './global';
+import user from './user';
 
 export default new Vuex.Store({
     modules: {
+        global,
         user,
         // student
     },
