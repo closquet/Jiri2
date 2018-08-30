@@ -1,4 +1,5 @@
 const mutations = {
+    STORE_CURRENT_USER: (state, currentUser) => { //used in routes.js
         state.currentUser = currentUser;
     },
     STORE_ALL_USERS: (state, users) => {
