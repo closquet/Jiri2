@@ -4,6 +4,10 @@ const commonRoutes = [
 
 
 import AdminHome from '../components/views/admin/adminHome/AdminHome';
+import UsersList from '../components/views/admin/users/UsersList';
+import AllUsersList from '../components/views/admin/users/parts/AllUsersList';
+import AllTeachersList from '../components/views/admin/users/parts/AllTeachersList';
+import AllGuestsList from '../components/views/admin/users/parts/AllGuestsList';
 
 const adminRoutes = [
     {
@@ -11,6 +15,23 @@ const adminRoutes = [
         component: AdminHome
     },
     {
+        path: '/utilisateurs',
+        component: UsersList,
+        children: [
+            {
+                path: '',
+                component: AllUsersList
+            },
+            {
+                path: 'professeurs',
+                component: AllTeachersList
+            },
+            {
+                path: 'guests',
+                component: AllGuestsList
+            },
+        ]
+    },
 ];
 
 
