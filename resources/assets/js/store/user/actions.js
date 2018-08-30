@@ -6,9 +6,9 @@ const actions = {
         if(response){
             store.commit('ADD_USER',userToAdd);
         }
+    storeCurrentUser: ({commit}, currentUser) => {
+        commit('STORE_CURRENT_USER', currentUser);
     },
-    storeCurrentUser: (store, currentUser) => {
-        store.commit('STORE_CURRENT_USER', currentUser);
     },
     storeAllUsers: (store) => {
         const users = api.getAllUsers();
