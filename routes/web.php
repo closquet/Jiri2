@@ -30,6 +30,7 @@ Route::group( [ 'middleware' => 'admin' ], function (){
 	Route::post('/users/{userId}/disable', 'UserController@disable')->name('users/disable');
 	Route::post('/users/{userId}/enable', 'UserController@enable')->name('users/enable');
 	Route::post('/users/{userId}/update', 'UserController@update')->name('users/update');
+	Route::post('/users/store', 'UserController@store')->name('users/store');
 //	Route::get('/user/{id}', 'UserController@show')->name('user/show');
 	
 });
