@@ -74,8 +74,6 @@ export const disableUser = (userId, cb) => {
 };
 
 //if logged and is admin
-export const disableUser = (userId) => {
-    return true;
 export const enableUser = (userId, cb) => {
     axios.post('/users/' + userId + '/enable')
         .catch( error => {
