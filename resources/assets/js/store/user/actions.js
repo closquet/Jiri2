@@ -1,4 +1,5 @@
-import * as api from './api'
+import * as api from './api';
+import store from "../index";
 
 const actions = {
     storeCurrentUser: ({commit}, currentUser) => {
