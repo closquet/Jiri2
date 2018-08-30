@@ -15,13 +15,20 @@ const actions = {
             commit('STORE_ALL_USERS', users);
         });
     },
+
+    disableUser: ({commit}, userId) => {
+        api.disableUser( userId,  (status) => {
+            if(status === 200){
+                commit('DISABLE_USER', userId);
+            }else{
+                console.log('Error: ' + status);
+            }
+        });
+    },
+
+
     },
     },
-    disableUser: (store, userId) => {
-        const response = api.disableUser(userId);
-        if(response){
-            store.commit('DISABLE_USER', userId);
-        }
     },
     enableUser: (store, userId) => {
         const response = api.enableUser(userId);
