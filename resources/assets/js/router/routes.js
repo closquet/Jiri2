@@ -6,6 +6,7 @@ const commonRoutes = [
 import AdminHome from '../components/views/admin/adminHome/AdminHome';
 import UsersList from '../components/views/admin/users/UsersList';
 import UserEdit from '../components/views/admin/users/UserEdit';
+import AddUser from '../components/views/admin/users/AddUser';
 import AllUsersList from '../components/views/admin/users/parts/AllUsersList';
 import AllTeachersList from '../components/views/admin/users/parts/AllTeachersList';
 import AllGuestsList from '../components/views/admin/users/parts/AllGuestsList';
@@ -36,6 +37,10 @@ const adminRoutes = [
     {
         path: '/utilisateurs/:userId/modifier',
         component: UserEdit
+    },
+    {
+        path: '/utilisateurs/ajouter',
+        component: AddUser
     },
 ];
 
