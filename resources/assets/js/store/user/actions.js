@@ -36,15 +36,22 @@ const actions = {
             }
         });
     },
+
+    updateUser: ({commit}, userContent) => {
+        store.dispatch('user/editUserFormStatus','loading');
+        api.updateUser( userContent,  (status) => {
+            if(status === 200){
+                commit('UPDATE_USER', userContent);
+                store.dispatch('user/editUserFormStatus','success');
+            }else{
+                console.log('Error: ' + status);
+                store.dispatch('user/editUserFormStatus','error');
+            }
+        });
     },
     },
     },
-    updateUser: (store, newUserContent) => {
-        const response = api.updateUser(newUserContent);
-        if(response){
-            store.commit('UPDATE_USER', newUserContent);
-        }
-    }
+
 };
 
 export default actions;
