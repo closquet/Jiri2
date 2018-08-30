@@ -34,17 +34,16 @@ const actions = {
     },
 
     updateUser: ({commit}, userContent) => {
-        store.dispatch('user/editUserFormStatus','loading');
+        store.dispatch('global/editFormStatus','loading');
         api.updateUser( userContent,  (status) => {
             if(status === 200){
                 commit('UPDATE_USER', userContent);
-                store.dispatch('user/editUserFormStatus','success');
+                store.dispatch('global/editFormStatus','success');
             }else{
                 console.log('Error: ' + status);
-                store.dispatch('user/editUserFormStatus','error');
+                store.dispatch('global/editFormStatus','error');
             }
         });
-    },
     },
 
     addUser: ({commit}, userContent) => {
@@ -52,10 +51,10 @@ const actions = {
         api.addUser( userContent,  (status) => {
             if(status === 200){
                 commit('ADD_USER', userContent);
-                store.dispatch('user/editUserFormStatus','success');
+                store.dispatch('global/editFormStatus','success');
             }else{
                 console.log('Error: ' + status);
-                store.dispatch('user/editUserFormStatus','error');
+                store.dispatch('global/editFormStatus','error');
             }
         });
     },
