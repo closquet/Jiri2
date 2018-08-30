@@ -12,7 +12,9 @@ const mutations = {
     },
 
     ENABLE_USER: (state, userId) => {
-        state.users.filter(user => user.id === userId)[0].isAvailable = 1
+        state.users.find(user => user.id === userId).is_available = 1
+    },
+
     },
 
     UPDATE_USER: (state, newUserContent) => {
