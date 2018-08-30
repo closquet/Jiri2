@@ -8,7 +8,7 @@ const mutations = {
     },
 
     DISABLE_USER: (state, userId) => {
-        state.users.filter(user => user.id === userId)[0].isAvailable = 0
+        state.users.find(user => user.id === userId).is_available = 0
     },
 
     ENABLE_USER: (state, userId) => {
