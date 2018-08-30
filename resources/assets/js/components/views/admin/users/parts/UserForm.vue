@@ -50,9 +50,9 @@
 
                 <div>
                     <button class="mr-2 mt-2 btn btn-primary">Enregistrer
-                        <font-awesome-icon v-if="userFormStatus === 'success'" icon="thumbs-up" class="ml-1" />
-                        <font-awesome-icon v-if="userFormStatus === 'error'" icon="thumbs-down" class="ml-1" />
-                        <font-awesome-icon v-if="userFormStatus === 'loading'" icon="spinner" class="fa-pulse ml-1" />
+                        <font-awesome-icon v-if="formStatus === 'success'" icon="thumbs-up" class="ml-1" />
+                        <font-awesome-icon v-if="formStatus === 'error'" icon="thumbs-down" class="ml-1" />
+                        <font-awesome-icon v-if="formStatus === 'loading'" icon="spinner" class="fa-pulse ml-1" />
                     </button>
                     <a href="#" @click.prevent="$router.go(-1)" class="mr-2 mt-2 btn btn-link">Retour</a>
                 </div>
@@ -90,16 +90,20 @@
             'user'
         ],
         computed:{
+            ...mapState('global',[
+                'formStatus'
+            ]),
             ...mapState('user',[
                 'users',
-                'userFormStatus'
             ]),
         },
         methods:{
+            ...mapActions('global',[
+                'editFormStatus'
+            ]),
             ...mapActions('user',[
                 'updateUser',
                 'addUser',
-                'editUserFormStatus'
             ]),
             validEmail: function (email) {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -156,19 +160,19 @@
                 if(!this.errors.length) {
                     if(this.user){
                         this.updateUser(this.userForm);
-                        this.editUserFormStatus = 'success';
+                        this.editFormStatus = 'success';
                     }else{
                         this.addUser(this.userForm);
-                        this.editUserFormStatus = 'success';
+                        this.editFormStatus = 'success';
                     }
 
                 }else{
-                    this.editUserFormStatus = 'error';
+                    this.editFormStatus = 'error';
                 }
             }  
         },
         mounted(){
-            this.editUserFormStatus('');
+            this.editFormStatus('');
             if(this.user){
                 this.userForm.name = this.user.name;
                 this.userForm.email = this.user.email;
