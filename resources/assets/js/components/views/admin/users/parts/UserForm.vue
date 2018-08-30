@@ -3,39 +3,42 @@
         <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5">
             <form @submit="checkForm" action="" method="post">
                 <div class="form-group">
-                    <label for="name-field">Nom&nbsp;: </label>
-                    <input class="form-control" required v-model="userForm.name" type="text" name="name" aria-describedby="nameHelp" placeholder="Prénom" id="name-field">
+                    <label for="name-field">Nom complet&nbsp;: </label>
+                    <input class="form-control" required v-model="userForm.name" type="text" name="name" aria-describedby="nameHelp" placeholder="John Doe" id="name-field">
                     <small id="nameHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-group">
                     <label for="email-field">Email&nbsp;: </label>
-                    <input class="form-control" required v-model="userForm.email" type="email" name="email" aria-describedby="emailHelp" placeholder="Email" id="email-field">
+                    <input class="form-control" required v-model="userForm.email" type="email" name="email" aria-describedby="emailHelp" placeholder="name@mail.be" id="email-field">
                     <small id="emailHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone-field">Phone&nbsp;: </label>
+                    <label for="phone-field">Téléphone&nbsp;: </label>
                     <input class="form-control" v-model="userForm.phone" type="tel" name="phone" placeholder="Phone" id="phone-field">
                 </div>
 
                 <div class="form-group">
                     <label for="category-field">Catégorie&nbsp;: </label>
-                    <select class="form-control" required v-model="userForm.category" name="category" id="category-field">
+                    <select class="form-control" required v-model="userForm.category" aria-describedby="categoryHelp" name="category" id="category-field">
                         <option value="1">Professeur</option>
                         <option value="2">Invité</option>
                         <option value="0">Aucune (admin sans meeting)</option>
                     </select>
+                    <small id="categoryHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-group">
                     <label for="password-field">Mot de pass&nbsp;: </label>
-                    <input class="form-control" v-model="userForm.password" minlength="6" type="password" name="password" placeholder="secret" id="password-field">
+                    <input class="form-control" v-model="userForm.password" aria-describedby="passwordHelp" minlength="6" type="password" name="password" placeholder="secret" id="password-field">
+                    <small v-if="!user" id="passwordHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirmation-field">Confirmer mot de pass&nbsp;: </label>
-                    <input class="form-control" v-model="userForm.password_confirmation" minlength="6" type="password" name="password_confirmation" placeholder="secret" id="password_confirmation-field">
+                    <input class="form-control" v-model="userForm.password_confirmation" minlength="6" aria-describedby="password_confirmationHelp" type="password" name="password_confirmation" placeholder="secret" id="password_confirmation-field">
+                    <small v-if="!user" id="password_confirmationHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-check">
@@ -155,6 +158,11 @@
 
                 }else if( this.users.filter(user => user.email === this.userForm.email).length ) {
                     this.errors.push('Email lié à un compte existant');
+                }
+
+                if(!this.userForm.category) {
+                    this.errors.push('Catégorie requiss.');
+
                 }
 
                 if(!this.errors.length) {
