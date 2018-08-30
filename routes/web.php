@@ -27,6 +27,7 @@ Route::group( [ 'middleware' => 'auth' ], function (){
 Route::group( [ 'middleware' => 'admin' ], function (){
 	
 	Route::get('/users', 'UserController@index')->name('users/index');
+	Route::post('/users/{userId}/disable', 'UserController@disable')->name('users/disable');
 //	Route::get('/user/{id}', 'UserController@show')->name('user/show');
 	
 });
