@@ -17,7 +17,8 @@ import {
     faEdit,
     faThumbsUp,
     faThumbsDown,
-    faSpinner
+    faSpinner,
+    faUser
 } from '@fortawesome/free-solid-svg-icons';
 library.add(
     faPlusCircle,
@@ -25,7 +26,8 @@ library.add(
     faEdit,
     faThumbsUp,
     faThumbsDown,
-    faSpinner
+    faSpinner,
+    faUser
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
