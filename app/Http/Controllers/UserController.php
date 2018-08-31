@@ -68,7 +68,7 @@ class UserController extends Controller
 	    ]);
 	
 	    if ($validator->fails()) {
-	    	return response($validator->errors(), 304);
+	    	return response('Data validation error : ' . $validator->errors(), 304);
 	    }
 	    
 	    $user = User::findOrFail($id);
