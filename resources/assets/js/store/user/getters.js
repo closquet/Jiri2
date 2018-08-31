@@ -1,5 +1,3 @@
-import api from './api'
-
 const getters = {
 
     getAllUsers: state => state.users,
