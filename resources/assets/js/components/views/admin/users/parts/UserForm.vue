@@ -52,6 +52,7 @@
                 </div>
 
                 <div>
+                    <button class="mr-2 mt-3 btn btn-primary">Enregistrer
                         <font-awesome-icon v-if="formStatus === 'success'" icon="thumbs-up" class="ml-1" />
                         <font-awesome-icon v-if="formStatus === 'error'" icon="thumbs-down" class="ml-1" />
                         <font-awesome-icon v-if="formStatus === 'loading'" icon="spinner" class="fa-pulse ml-1" />
@@ -146,6 +147,7 @@
                 if(!this.userForm.email) {
                     this.errors.push('Email requis.');
                 }
+
                 if(!this.validEmail(this.userForm.email)) {
                     this.errors.push('L&rsquo;email n&rsquo;est pas valide.');
                 }else if( this.user ) {
