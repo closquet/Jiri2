@@ -2,8 +2,9 @@ const getters = {
 
     getAllUsers: state => state.users,
     getAllAdminUsers: state => state.users.filter(user => user.is_admin),
-    getAllGuestUsers: state => state.users.filter(user => !user.is_admin),
     getAllUsersNoSupAdmin: state => state.users.filter(user => user.category !== 3),
+    getAllTeacherUsers: state => state.users.filter(user => user.category === 1),
+    getAllGuestUsers: state => state.users.filter(user => user.category === 2),
 
     getAvailableUsers: state => state.users.filter(user => user.is_available),
     getAvailableUsersNoSupAdmin: state => state.users.filter(user => user.is_available && user.category !== 3),
