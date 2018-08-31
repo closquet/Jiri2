@@ -16,17 +16,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return response(User::all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -55,17 +44,6 @@ class UserController extends Controller
     	$user->is_available = 1;
     	$user->save();
         return response('user ' . $user->name . ' enabled in the database', 200);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
