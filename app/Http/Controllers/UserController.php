@@ -105,7 +105,7 @@ class UserController extends Controller
 			'name' => 'required|max:20',
 			'email' => 'required|email|unique:users,email',
 			'phone' => 'nullable',
-			'category' => 'required|in:0,1,2',
+			'category' => 'required|in:1,2,3',
 			'password' => 'required|confirmed|min:6',
 			'is_available' => 'required|boolean',
 			'is_admin' => 'required|boolean',
