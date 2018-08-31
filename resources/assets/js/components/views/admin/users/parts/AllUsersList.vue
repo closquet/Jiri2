@@ -9,7 +9,7 @@
                     <span class="h5 card-title" role="heading" aria-level="3">Disponibles</span>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li v-for="user in getAvailableUsers" class="list-group-item">
+                    <li v-for="user in getAvailableUsersNoSupAdmin" class="list-group-item">
                         <a @click.prevent="disableUser(user.id)" title="Déplacer dans indisponible" href="#"><font-awesome-icon icon="minus-circle" class="mr-1" /></a>
                         <router-link :to="'/utilisateurs/' + user.id + '/modifier'" title="Modifier" href="#"><font-awesome-icon icon="edit" class="mr-1" /></router-link>
                         {{user.name}} - {{user.email}}{{user.is_admin ? ' - ADMINISTRATEUR' : ''}}
@@ -37,7 +37,7 @@
     export default {
         computed: {
             ...mapGetters('user',[
-                'getAvailableUsers',
+                'getAvailableUsersNoSupAdmin',
                 'getUnavailableUsers',
             ]),
         },
