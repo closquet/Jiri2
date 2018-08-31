@@ -26,27 +26,27 @@
                     <h3 class="h5" role="heading" aria-level="3">Utilisateurs</h3>
                     <div class="row mb-3">
                         <div class="col-12">
-                            Utilisateurs&nbsp;: 19 (12 disponibles) - <router-link class="" to="/utilisateurs">Voir la liste</router-link>
+                            Utilisateurs&nbsp;: {{getAllUsersNoSupAdmin.length}} ({{getAvailableUsersNoSupAdmin.length}} disponibles) - <router-link class="" to="/utilisateurs">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Professeur&nbsp;: 5 (4 disponibles) - <router-link class="" to="/utilisateurs/professeurs">Voir la liste</router-link>
+                            Professeur&nbsp;: {{getAllTeacherUsers.length}} ({{getAvailableTeachers.length}} disponibles) - <router-link class="" to="/utilisateurs/professeurs">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Guest&nbsp;: 14 (8 disponibles) - <router-link class="" to="/utilisateurs/guests">Voir la liste</router-link>
+                            Guest&nbsp;: {{getAllGuestUsers.length}} ({{getAvailableGuests.length}} disponibles) - <router-link class="" to="/utilisateurs/guests">Voir la liste</router-link>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h3 class="h5" role="heading" aria-level="3">Étudients</h3>
+                    <h3 class="h5" role="heading" aria-level="3">Étudiants</h3>
                     <div class="row mb-3">
                         <div class="col-12">
-                            Étudients&nbsp;: 21 (17 disponibles) - <router-link class="" to="/étudiants">Voir la liste</router-link>
+                            Étudiants&nbsp;: {{getAllStudents.length}} ({{getAvailableStudents.length}} disponibles) - <router-link class="" to="/etudiants">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Étudients B2&nbsp;: 13 (10 disponibles) - <router-link class="" to="/étudiants/b2">Voir la liste</router-link>
+                            Étudiants B2&nbsp;: {{getAllB2Students.length}} ({{getAvailableB2.length}} disponibles) - <router-link class="" to="/etudiants/bloc2">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Étudients B3&nbsp;: 8 (7 disponibles) - <router-link class="" to="/étudiants/b3">Voir la liste</router-link>
+                            Étudiants B3&nbsp;: {{getAllB3Students.length}} ({{getAvailableB3.length}} disponibles) - <router-link class="" to="/etudiants/bloc3">Voir la liste</router-link>
                         </div>
                     </div>
                 </div>
@@ -82,28 +82,57 @@
                     </div>
                 </div>
             </div>
-
-
-
         </section>
 
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapState, mapActions, mapGetters} from 'vuex';
     import JuryControl from '../parts/JuryControl';
     import ContentHeader from '../../common/contentHeader/ContentHeader';
 
     export default {
         computed:{
             ...mapState('user',[
-                'currentUser'
+                'currentUser',
+                'users',
+            ]),
+            ...mapState('student',[
+                'students',
+            ]),
+            ...mapGetters('student',[
+                'getAllStudents',
+                'getAllB2Students',
+                'getAllB3Students',
+                'getAvailableStudents',
+                'getAvailableB2',
+                'getAvailableB3',
+            ]),
+            ...mapGetters('user',[
+                'getAllUsersNoSupAdmin',
+                'getAllTeacherUsers',
+                'getAllGuestUsers',
+                'getAvailableUsersNoSupAdmin',
+                'getAvailableGuests',
+                'getAvailableTeachers',
             ]),
         },
         components:{
             ContentHeader,
-            JuryControl
-        }
+            JuryControl,
+        },
+        methods:{
+            ...mapActions('student',[
+                'storeAllStudents',
+            ]),
+            ...mapActions('user',[
+                'storeAllUsers',
+            ]),
+        },
+        beforeMount(){
+            this.storeAllStudents();
+            this.storeAllUsers();
+        },
     }
 </script>
