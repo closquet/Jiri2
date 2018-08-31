@@ -6,7 +6,7 @@
             </template>
             <template slot="content">
                 <p>
-                    Vous pouvez choisir de les afficher <router-link to="/utilisateurs">tous</router-link>,- de n'afficher que les <router-link to="/utilisateurs/professeurs">professeurs</router-link>, ou encore, que les <router-link to="/utilisateurs/guests">examinateurs invités</router-link>.
+                    Vous pouvez choisir de les afficher <router-link to="/utilisateurs">tous</router-link>, de n'afficher que les <router-link to="/utilisateurs/professeurs">professeurs</router-link>, ou encore, que les <router-link to="/utilisateurs/guests">examinateurs invités</router-link>.
                 </p>
             </template>
         </Content-header>
