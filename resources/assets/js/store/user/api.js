@@ -35,15 +35,6 @@ export const getCurrentUser = () => {
     }, response => {
         // error callback
     });
-    return {
-        id: '3',
-        name:'Billy Dumant',
-        email:'myriam@mail.be',
-        phone:'+32495000003',
-        category:'1', //1 = teacher, 2 = guest
-        isAdmin:1,
-        isAvailable:1
-    };
 };
 
 //if logged and is admin
