@@ -8,6 +8,7 @@ const getters = {
     getAvailableUsers: state => state.users.filter(user => user.is_available),
     getAvailableUsersNoSupAdmin: state => state.users.filter(user => user.is_available && user.category !== 3),
     getAvailableGuests: state => state.users.filter(user => user.category === 2 && user.is_available),
+    getAvailableTeachers: state => state.users.filter(user => user.category === 1 && user.is_available),
 
     getUnavailableUsers: state => state.users.filter(user => !user.is_available),
     getUnavailableGuests: state => state.users.filter(user => user.category === 2 && !user.is_available),
