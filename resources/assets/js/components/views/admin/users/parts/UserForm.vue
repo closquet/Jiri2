@@ -24,7 +24,7 @@
                     <select class="form-control" required v-model="userForm.category" aria-describedby="categoryHelp" name="category" id="category-field">
                         <option value="1">Professeur</option>
                         <option value="2">Invité</option>
-                        <option value="0">Aucune (admin sans meeting)</option>
+                        <option value="3">Aucune (admin sans meeting)</option>
                     </select>
                     <small id="categoryHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
@@ -52,7 +52,6 @@
                 </div>
 
                 <div>
-                    <button class="mr-2 mt-2 btn btn-primary">Enregistrer
                         <font-awesome-icon v-if="formStatus === 'success'" icon="thumbs-up" class="ml-1" />
                         <font-awesome-icon v-if="formStatus === 'error'" icon="thumbs-down" class="ml-1" />
                         <font-awesome-icon v-if="formStatus === 'loading'" icon="spinner" class="fa-pulse ml-1" />
@@ -146,22 +145,18 @@
 
                 if(!this.userForm.email) {
                     this.errors.push('Email requis.');
-
                 }
                 if(!this.validEmail(this.userForm.email)) {
                     this.errors.push('L&rsquo;email n&rsquo;est pas valide.');
-
                 }else if( this.user ) {
                     if( this.userForm.email !== this.user.email && this.users.filter(user => user.email === this.userForm.email).length ) {
                         this.errors.push('Email lié à un compte existant');
                     }
-
                 }else if( this.users.filter(user => user.email === this.userForm.email).length ) {
                     this.errors.push('Email lié à un compte existant');
                 }
 
                 if(!this.userForm.category) {
-                    this.errors.push('Catégorie requiss.');
 
                 }
 
