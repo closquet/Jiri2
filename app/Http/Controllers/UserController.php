@@ -16,6 +16,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        return response(User::all(), 200);
     }
 
     /**
