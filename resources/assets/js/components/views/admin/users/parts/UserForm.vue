@@ -157,6 +157,7 @@
                 }
 
                 if(!this.userForm.category) {
+                    this.errors.push('Catégorie requise.');
 
                 }
 
