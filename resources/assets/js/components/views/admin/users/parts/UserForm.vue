@@ -167,6 +167,16 @@
                     }else{
                         this.addUser(this.userForm);
                         this.editFormStatus = 'success';
+                        this.userForm = {
+                            name: null,
+                            email: null,
+                            phone: null,
+                            category: null,
+                            password: null,
+                            password_confirmation: null,
+                            is_available: 0,
+                            is_admin: 0,
+                        };
                     }
 
                 }else{
