@@ -17,7 +17,7 @@
 
 <script>
     import ContentHeader from '../../common/contentHeader/ContentHeader'
-    import {mapState, mapActions} from 'vuex';
+    import {mapState} from 'vuex';
 
     export default {
         components:{
@@ -28,10 +28,6 @@
                 'users ',
             ]),
         },
-        methods:{
-            ...mapActions('user',[
-                'storeAllUsers',
-            ]),
         },
         beforeMount(){
             this.storeAllUsers();
