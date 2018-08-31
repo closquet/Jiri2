@@ -28,9 +28,5 @@
                 'users ',
             ]),
         },
-        },
-        beforeMount(){
-            this.storeAllUsers();
-        },
     }
 </script>
