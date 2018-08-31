@@ -31,7 +31,12 @@ Route::group( [ 'middleware' => 'admin' ], function (){
 	Route::post('/users/{userId}/enable', 'UserController@enable')->name('users/enable');
 	Route::post('/users/{userId}/update', 'UserController@update')->name('users/update');
 	Route::post('/users/store', 'UserController@store')->name('users/store');
-//	Route::get('/user/{id}', 'UserController@show')->name('user/show');
+	
+	Route::get('/students', 'StudentController@index')->name('students/index');
+	Route::post('/students/{studentId}/disable', 'StudentController@disable')->name('students/disable');
+	Route::post('/students/{studentId}/enable', 'StudentController@enable')->name('students/enable');
+	Route::post('/students/{studentId}/update', 'StudentController@update')->name('students/update');
+	Route::post('/students/store', 'StudentController@store')->name('students/store');
 	
 });
 

@@ -4,12 +4,13 @@ Vue.use(Vuex);
 
 import global from './global';
 import user from './user';
+import student from './student';
 
 export default new Vuex.Store({
     modules: {
         global,
         user,
-        // student
+        student
     },
     strict: true
 })

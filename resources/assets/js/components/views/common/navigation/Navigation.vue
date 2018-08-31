@@ -31,19 +31,19 @@
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 <router-link class="dropdown-item" to="/jurys/ajouter">Ajouter</router-link>
                                 <router-link class="dropdown-item" to="/jurys">Tous les jurys</router-link>
-                                <router-link class="dropdown-item" to="/jurys/b2">Tous les jurys B2</router-link>
-                                <router-link class="dropdown-item" to="/jurys/b3">Tous les jurys B3</router-link>
+                                <router-link class="dropdown-item" to="/jurys/bloc2">Tous les jurys B2</router-link>
+                                <router-link class="dropdown-item" to="/jurys/bloc3">Tous les jurys B3</router-link>
                             </div>
                         </li>
                         <li v-if="currentUser.is_admin" class="nav-item dropdown">
-                            <a href="#" class="main-nav__link  nav-link dropdown-toggle" :class="$route.path.includes('/étudiants') ? 'router-link-active' : ''" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="main-nav__link  nav-link dropdown-toggle" :class="$route.path.includes('/etudiants') ? 'router-link-active' : ''" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Étudiants
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown03">
-                                <router-link class="dropdown-item" to="/étudiants/ajouter">Ajouter</router-link>
-                                <router-link class="dropdown-item" to="/étudiants">Tous les étudiants</router-link>
-                                <router-link class="dropdown-item" to="/étudiants/b2">Tous les étudiants B2</router-link>
-                                <router-link class="dropdown-item" to="/étudiants/b3">Tous les étudiants B3</router-link>
+                                <router-link class="dropdown-item" to="/etudiants/ajouter">Ajouter</router-link>
+                                <router-link class="dropdown-item" to="/etudiants">Tous les étudiants</router-link>
+                                <router-link class="dropdown-item" to="/etudiants/bloc2">Tous les étudiants B2</router-link>
+                                <router-link class="dropdown-item" to="/etudiants/bloc3">Tous les étudiants B3</router-link>
                             </div>
                         </li>
 
@@ -54,22 +54,23 @@
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
                                 <router-link class="dropdown-item" to="/projets/ajouter">Ajouter</router-link>
                                 <router-link class="dropdown-item" to="/projets">Tous les projets</router-link>
-                                <router-link class="dropdown-item" to="/projets/b2">Tous les projets B2</router-link>
-                                <router-link class="dropdown-item" to="/projets/b3">Tous les projets B3</router-link>
+                                <router-link class="dropdown-item" to="/projets/bloc2">Tous les projets B2</router-link>
+                                <router-link class="dropdown-item" to="/projets/bloc3">Tous les projets B3</router-link>
                             </div>
                         </li>
 
 
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown ml-2">
                             <a href="#" class="nav-link dropdown-toggle" id="logout-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{currentUser.email}}
+                                <font-awesome-icon class="mr-2" icon="user" />{{currentUser.email}}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="logout-dropdown">
+                                <router-link class="dropdown-item" :to="'/utilisateurs/' + currentUser.id + '/modifier'">Mon profil</router-link>
                                 <a class="dropdown-item" href="/logout">Se déconnecter</a>
                             </div>
                         </li>
                     </ul>
-                    <router-link class="btn btn-outline-success" to="/meetings/créer">Lancer un meeting</router-link>
+                    <router-link v-if="currentUser.category !== 3" class="btn btn-outline-success" to="/meetings/créer">Lancer un meeting</router-link>
                 </div>
             </div>
         </div>
