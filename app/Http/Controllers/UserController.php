@@ -59,7 +59,7 @@ class UserController extends Controller
 		    'name' => 'required|max:20',
 		    'email' => 'required|email|unique:users,email,'.$id,
 		    'phone' => 'nullable',
-		    'category' => 'required|in:0,1,2',
+		    'category' => 'required|in:1,2,3',
 		    'password' => 'required_if:password_confirmation,nullable',
 		    'password_confirmation' => 'required_if:password,nullable|same:password',
 		    'is_available' => 'required|boolean',
