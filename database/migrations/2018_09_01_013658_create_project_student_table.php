@@ -15,8 +15,8 @@ class CreateProjectStudentTable extends Migration
     {
         Schema::create('project_student', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('student_id');
-            $table->increments('project_id');
+            $table->integer('student_id')->unsigned();
+            $table->integer('project_id')->unsigned();
             $table->string('site_url');
             $table->string('site_account')->nullable();
             $table->string('site_password')->nullable();
