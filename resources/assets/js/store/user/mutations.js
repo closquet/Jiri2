@@ -8,11 +8,11 @@ const mutations = {
     },
 
     DISABLE_USER: (state, userId) => {
-        state.users.find(user => user.id === userId).is_available = 0
+        state.users.find(user => user.id === userId).is_available = false
     },
 
     ENABLE_USER: (state, userId) => {
-        state.users.find(user => user.id === userId).is_available = 1
+        state.users.find(user => user.id === userId).is_available = true
     },
 
     UPDATE_USER: (state, newUserContent) => {
@@ -24,8 +24,8 @@ const mutations = {
         state.users.find(user => user.id === newUserContent.id).is_admin = newUserContent.is_admin;
     },
 
-    ADD_USER: (state, {name, email, phone, category, isAvailable, isAdmin}) => {
-        state.users.push({name, email, phone, category, isAvailable, isAdmin});
+    ADD_USER: (state, {id, name, email, phone, category, is_available, is_admin}) => {
+        state.users.push({id, name, email, phone, category, is_available, is_admin});
     },
 
 };

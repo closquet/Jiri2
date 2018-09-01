@@ -22,8 +22,8 @@
                 <div class="form-group">
                     <label for="bloc-field">Bloc&nbsp;: </label>
                     <select class="form-control" required v-model="studentForm.bloc" aria-describedby="blocHelp" name="bloc" id="bloc-field">
-                        <option value="2">Bloc 2</option>
-                        <option value="3">Bloc 3</option>
+                        <option :value="2">Bloc 2</option>
+                        <option :value="3">Bloc 3</option>
                     </select>
                     <small id="blocHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
@@ -81,12 +81,25 @@
         },
         methods:{
             ...mapActions('global',[
-                'editFormStatus'
+                'editFormStatus',
+                'checkFormStatusRepeater',
             ]),
             ...mapActions('student',[
                 'updateStudent',
                 'addStudent',
             ]),
+            formStatusSuccess(){
+                this.studentForm = {
+                    name: null,
+                    email: null,
+                    phone: null,
+                    bloc: null,
+                    is_available: 0,
+                };
+            },
+            formStatusError(){
+                this.errors.push('Erreur serveur, veuillez réessayer plus tard.');
+            },
             validEmail: function (email) {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
@@ -130,21 +143,10 @@
                 if(!this.errors.length) {
                     if(this.student){
                         this.updateStudent(this.studentForm);
-                        this.editFormStatus = 'success';
                     }else{
                         this.addStudent(this.studentForm);
-                        this.editFormStatus = 'success';
-                        this.studentForm = {
-                            name: null,
-                            email: null,
-                            phone: null,
-                            bloc: null,
-                            is_available: 0,
-                        };
+                        this.checkFormStatusRepeater([this.formStatusSuccess, this.formStatusError]);
                     }
-
-                }else{
-                    this.editFormStatus = 'error';
                 }
             }  
         },

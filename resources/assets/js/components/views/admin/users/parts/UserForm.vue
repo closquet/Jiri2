@@ -22,9 +22,9 @@
                 <div class="form-group">
                     <label for="category-field">Catégorie&nbsp;: </label>
                     <select class="form-control" required v-model="userForm.category" aria-describedby="categoryHelp" name="category" id="category-field">
-                        <option value="1">Professeur</option>
-                        <option value="2">Invité</option>
-                        <option value="3">Aucune (admin sans meeting)</option>
+                        <option :value="1">Professeur</option>
+                        <option :value="2">Invité</option>
+                        <option :value="3">Aucune (admin sans meeting)</option>
                     </select>
                     <small id="categoryHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
@@ -83,8 +83,8 @@
                     category: null,
                     password: null,
                     password_confirmation: null,
-                    is_available: 0,
-                    is_admin: 0,
+                    is_available: false,
+                    is_admin: false,
                 },
                 errors: [],
             }
@@ -102,12 +102,28 @@
         },
         methods:{
             ...mapActions('global',[
-                'editFormStatus'
+                'editFormStatus',
+                'checkFormStatusRepeater',
             ]),
             ...mapActions('user',[
                 'updateUser',
                 'addUser',
             ]),
+            formStatusSuccess(){
+                this.userForm = {
+                    name: null,
+                    email: null,
+                    phone: null,
+                    category: null,
+                    password: null,
+                    password_confirmation: null,
+                    is_available: false,
+                    is_admin: false,
+                };
+            },
+            formStatusError(){
+                this.errors.push('Erreur serveur, veuillez réessayer plus tard.');
+            },
             validEmail: function (email) {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
@@ -166,25 +182,11 @@
                 if(!this.errors.length) {
                     if(this.user){
                         this.updateUser(this.userForm);
-                        this.editFormStatus = 'success';
                     }else{
                         this.addUser(this.userForm);
-                        this.editFormStatus = 'success';
-                        this.userForm = {
-                            name: null,
-                            email: null,
-                            phone: null,
-                            category: null,
-                            password: null,
-                            password_confirmation: null,
-                            is_available: 0,
-                            is_admin: 0,
-                        };
+                        this.checkFormStatusRepeater([this.formStatusSuccess, this.formStatusError]);
                     }
-
-                }else{
-                    this.editFormStatus = 'error';
-                }
+                }else{this.editFormStatus('error');}
             }  
         },
         mounted(){

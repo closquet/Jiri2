@@ -6,8 +6,8 @@ const state = {
         category:'1', //1 = teacher, 2 = guest
         email:'',
         phone:'',
-        isAdmin:'0',
-        isAvailable:'0'
+        is_admin:'0',
+        is_available:'0'
     },
     // students:[],
     // projectsTypes:[],

@@ -106,7 +106,10 @@ export const updateStudent = (studentContent, cb) => {
 export const addStudent = (studentContent, cb) => {
     axios.post('/students/store', studentContent)
         .then( axiosResponse => {
-            cb(axiosResponse.status);
+            cb({
+                'status': axiosResponse.status,
+                'data' : axiosResponse.data
+            });
         })
         .catch( error => {
             if (error.response) {

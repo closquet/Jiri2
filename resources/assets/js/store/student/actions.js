@@ -44,12 +44,12 @@ const actions = {
 
     addStudent: ({commit}, studentContent) => {
         store.dispatch('global/editFormStatus','loading');
-        api.addStudent( studentContent,  (status) => {
-            if(status === 200){
-                commit('ADD_STUDENT', studentContent);
+        api.addStudent( studentContent,  (response) => {
+            if(response.status === 200){
+                commit('ADD_STUDENT', response.data);
                 store.dispatch('global/editFormStatus','success');
             }else{
-                console.log('Action : Add student error: ' + status);
+                console.log('Action : Add student error: ' + response);
                 store.dispatch('global/editFormStatus','error');
             }
         });

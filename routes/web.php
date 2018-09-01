@@ -38,6 +38,10 @@ Route::group( [ 'middleware' => 'admin' ], function (){
 	Route::post('/students/{studentId}/update', 'StudentController@update')->name('students/update');
 	Route::post('/students/store', 'StudentController@store')->name('students/store');
 	
+	Route::get('/projects', 'ProjectController@index')->name('projects/index');
+	Route::post('/projects/{projectId}/update', 'ProjectController@update')->name('projects/update');
+	Route::post('/projects/store', 'ProjectController@store')->name('projects/store');
+	
 });
 
 

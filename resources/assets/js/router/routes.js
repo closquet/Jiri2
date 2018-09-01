@@ -19,6 +19,13 @@ import AllStudentsList from '../components/views/admin/students/parts/AllStudent
 import AllB2StudentsList from '../components/views/admin/students/parts/AllB2StudentsList';
 import AllB3StudentsList from '../components/views/admin/students/parts/AllB3StudentsList';
 
+import ProjectsList from '../components/views/admin/projects/ProjectsList';
+import ProjectEdit from '../components/views/admin/projects/ProjectEdit';
+import AddProject from '../components/views/admin/projects/AddProject';
+import AllProjectsList from '../components/views/admin/projects/parts/AllProjectsList';
+import AllB2ProjectsList from '../components/views/admin/projects/parts/AllB2ProjectsList';
+import AllB3ProjectsList from '../components/views/admin/projects/parts/AllB3ProjectsList';
+
 const adminRoutes = [
     {
         path: '/home',
@@ -76,6 +83,32 @@ const adminRoutes = [
     {
         path: '/etudiants/ajouter',
         component: AddStudent
+    },
+    {
+        path: '/projets',
+        component: ProjectsList,
+        children: [
+            {
+                path: '',
+                component: AllProjectsList
+            },
+            {
+                path: 'bloc2',
+                component: AllB2ProjectsList
+            },
+            {
+                path: 'bloc3',
+                component: AllB3ProjectsList
+            },
+        ]
+    },
+    {
+        path: '/projets/:projectId/modifier',
+        component: ProjectEdit
+    },
+    {
+        path: '/projets/ajouter',
+        component: AddProject
     },
 ];
 

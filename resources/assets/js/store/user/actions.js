@@ -48,12 +48,12 @@ const actions = {
 
     addUser: ({commit}, userContent) => {
         store.dispatch('global/editFormStatus','loading');
-        api.addUser( userContent,  (status) => {
-            if(status === 200){
-                commit('ADD_USER', userContent);
+        api.addUser( userContent,  (response) => {
+            if(response.status === 200){
+                commit('ADD_USER', response.data);
                 store.dispatch('global/editFormStatus','success');
             }else{
-                console.log('Error: ' + status);
+                console.log('Error: ' + response);
                 store.dispatch('global/editFormStatus','error');
             }
         });

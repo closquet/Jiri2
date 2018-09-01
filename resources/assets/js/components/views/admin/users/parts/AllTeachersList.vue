@@ -4,7 +4,7 @@
             <h2 class="mb-3" id="dashboard-current-jury-title" role="heading" aria-level="2">
                 Les professeurs
             </h2>
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-body">
                     <span class="h5 card-title" role="heading" aria-level="3">Disponibles</span>
                 </div>
@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            <router-link to="/utilisateurs/ajouter" class="btn btn-primary">Ajouter</router-link> <a href="#" @click.prevent="$router.go(-1)" class="mr-2 mt-2 btn btn-link">Retour</a>
+            <router-link to="/utilisateurs/ajouter" class="btn btn-primary">Ajouter</router-link> <a href="#" @click.prevent="$router.go(-1)" class="mr-2 btn btn-link">Retour</a>
         </section>
     </div>
 </template>

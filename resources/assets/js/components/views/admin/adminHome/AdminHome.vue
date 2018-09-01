@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-5 col-xl-4">
                     <h3 class="h5" role="heading" aria-level="3">Étudiants</h3>
                     <div class="row mb-3">
                         <div class="col-12">
@@ -54,30 +54,30 @@
 
             <div class="row">
                 <div class="col-md-6 col-lg-5 col-xl-4">
+                    <h3 class="h5" role="heading" aria-level="3">Projets</h3>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            Projets&nbsp;: {{getAllProjects.length}} - <router-link class="" to="/projets">Voir la liste</router-link>
+                        </div>
+                        <div class="col-12">
+                            Projets B2&nbsp;: {{getAllB2Projects.length}} - <router-link class="" to="/projets/bloc2">Voir la liste</router-link>
+                        </div>
+                        <div class="col-12">
+                            Projets B3&nbsp;: {{getAllB3Projects.length}} - <router-link class="" to="/projets/bloc3">Voir la liste</router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5 col-xl-4">
                     <h3 class="h5" role="heading" aria-level="3">Jurys</h3>
                     <div class="row mb-3">
                         <div class="col-12">
                             Jurys&nbsp;: 4 (2 en cours) - <router-link class="" to="/jurys">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Jurys B2&nbsp;: 2 (1 en cours) - <router-link class="" to="/jurys/b2">Voir la liste</router-link>
+                            Jurys B2&nbsp;: 2 (1 en cours) - <router-link class="" to="/jurys/bloc2">Voir la liste</router-link>
                         </div>
                         <div class="col-12">
-                            Jurys B3&nbsp;: 2 (1 en cours) - <router-link class="" to="/jurys/b3">Voir la liste</router-link>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <h3 class="h5" role="heading" aria-level="3">Projets</h3>
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            Projets&nbsp;: 5 - <router-link class="" to="/projets">Voir la liste</router-link>
-                        </div>
-                        <div class="col-12">
-                            Projets B2&nbsp;: 3 - <router-link class="" to="/projets/b2">Voir la liste</router-link>
-                        </div>
-                        <div class="col-12">
-                            Projets B3&nbsp;: 2 - <router-link class="" to="/projets/b3">Voir la liste</router-link>
+                            Jurys B3&nbsp;: 2 (1 en cours) - <router-link class="" to="/jurys/bloc3">Voir la liste</router-link>
                         </div>
                     </div>
                 </div>
@@ -101,6 +101,14 @@
             ...mapState('student',[
                 'students',
             ]),
+            ...mapState('project',[
+                'projects',
+            ]),
+            ...mapGetters('project',[
+                'getAllProjects',
+                'getAllB2Projects',
+                'getAllB3Projects',
+            ]),
             ...mapGetters('student',[
                 'getAllStudents',
                 'getAllB2Students',
@@ -123,6 +131,9 @@
             JuryControl,
         },
         methods:{
+            ...mapActions('project',[
+                'storeAllProjects',
+            ]),
             ...mapActions('student',[
                 'storeAllStudents',
             ]),
@@ -133,6 +144,7 @@
         beforeMount(){
             this.storeAllStudents();
             this.storeAllUsers();
+            this.storeAllProjects();
         },
     }
 </script>

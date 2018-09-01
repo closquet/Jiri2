@@ -19,8 +19,8 @@ const mutations = {
         state.students.find(student => student.id === newStudentContent.id).is_available = newStudentContent.is_available;
     },
 
-    ADD_STUDENT: (state, {name, email, phone, bloc, isAvailable}) => {
-        state.students.push({name, email, phone, bloc, isAvailable});
+    ADD_STUDENT: (state, {id, name, email, phone, bloc, is_available}) => {
+        state.students.push({id, name, email, phone, bloc, is_available});
     },
 
 };

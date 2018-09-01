@@ -44,7 +44,7 @@ class UserController extends Controller
     	$user = User::findOrFail($id);
     	$user->is_available = 1;
     	$user->save();
-        return response('user ' . $user->name . ' enabled in the database', 200);
+        return response($user->id . ' enabled in the database', 200);
     }
 
     /**
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 	    $validator = Validator::make($request->all(), [
-		    'name' => 'required|max:20',
+		    'name' => 'required',
 		    'email' => 'required|email|unique:users,email,'.$id,
 		    'phone' => 'nullable',
 		    'category' => 'required|in:1,2,3',
@@ -102,7 +102,7 @@ class UserController extends Controller
 	public function store(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'name' => 'required|max:20',
+			'name' => 'required|',
 			'email' => 'required|email|unique:users,email',
 			'phone' => 'nullable',
 			'category' => 'required|in:1,2,3',
@@ -124,7 +124,7 @@ class UserController extends Controller
 		$user->is_available = $request->is_available;
 		$user->is_admin = $request->is_admin;
 		$user->save();
-		return response('user ' . $user->name . ' stored in the database', 200);
+		return response($user, 200);
 	}
 
     /**

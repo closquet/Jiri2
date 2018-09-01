@@ -55,7 +55,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 	    $validator = Validator::make($request->all(), [
-		    'name' => 'required|max:20',
+		    'name' => 'required',
 		    'email' => 'required|email|unique:students,email',
 		    'phone' => 'nullable',
 		    'bloc' => 'required|in:2,3',
@@ -73,7 +73,7 @@ class StudentController extends Controller
 	    $student->bloc = $request->bloc;
 	    $student->is_available = $request->is_available;
 	    $student->save();
-	    return response('student ' . $student->name . ' stored in the database', 200);
+	    return response($student, 200);
     }
 
     /**
@@ -86,7 +86,7 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
 	    $validator = Validator::make($request->all(), [
-		    'name' => 'required|max:20',
+		    'name' => 'required',
 		    'email' => 'required|email|unique:users,email,'.$id,
 		    'phone' => 'nullable',
 		    'bloc' => 'required|in:2,3',

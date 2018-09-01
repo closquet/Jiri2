@@ -2,11 +2,11 @@
     <div class="container site-content">
         <Content-header>
             <template slot="title">
-                Gestion des étudiants <router-link to="/etudiants/ajouter" class="btn btn-primary">Ajouter</router-link>
+                Gestion des projets <router-link to="/projets/ajouter" class="btn btn-primary">Ajouter</router-link>
             </template>
             <template slot="content">
                 <p>
-                    Vous pouvez choisir de les afficher <router-link to="/etudiants">tous</router-link>, de n'afficher que les <router-link to="/etudiants/bloc2">Bloc 2</router-link>, ou encore, que les <router-link to="/etudiants/bloc3">Bloc 3</router-link>.
+                    Vous pouvez choisir de les afficher <router-link to="/projets">tous</router-link>, de n'afficher que les <router-link to="/projets/bloc2">Bloc 2</router-link>, ou encore, que les <router-link to="/projets/bloc3">Bloc 3</router-link>.
                 </p>
             </template>
         </Content-header>
@@ -24,8 +24,8 @@
             ContentHeader,
         },
         computed:{
-            ...mapState('student',[
-                'students ',
+            ...mapState('project',[
+                'projects ',
             ]),
         },
     }
