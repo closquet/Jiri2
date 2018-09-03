@@ -1,6 +1,6 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Gestion des utilisateurs <router-link to="/utilisateurs/ajouter" class="btn btn-primary">Ajouter</router-link>
             </template>
@@ -9,24 +9,18 @@
                     Vous pouvez choisir de les afficher <router-link to="/utilisateurs">tous</router-link>, de n'afficher que les <router-link to="/utilisateurs/professeurs">professeurs</router-link>, ou encore, que les <router-link to="/utilisateurs/guests">examinateurs invités</router-link>.
                 </p>
             </template>
-        </Content-header>
+        </content-header>
 
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import ContentHeader from '../../common/contentHeader/ContentHeader'
-    import {mapState} from 'vuex';
+    import ContentHeader from '../../common/contentHeader/ContentHeader';
 
     export default {
         components:{
             ContentHeader,
-        },
-        computed:{
-            ...mapState('user',[
-                'users ',
-            ]),
         },
     }
 </script>

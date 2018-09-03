@@ -10,9 +10,9 @@ class Student extends Model
 		'name', 'email', 'phone', 'bloc', 'is_available'
 	];
 	
-	public function project()
+	public function projects()
 	{
-		return $this->belongsToMany( 'Jiri\Project')->withPivot('site_url', 'site_account', 'site_password', 'github_url', 'is_available')->withTimestamps();;
+		return $this->belongsToMany( 'Jiri\Project')->withPivot('id', 'site_url', 'site_account', 'site_password', 'github_url', 'is_available')->withTimestamps();;
 	}
 	
 	

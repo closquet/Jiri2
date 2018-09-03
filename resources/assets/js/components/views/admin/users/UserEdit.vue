@@ -1,11 +1,11 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Profile de {{ getUserFromId(parseInt(this.$route.params.userId)).name }}
             </template>
-        </Content-header>
-        <UserForm :user="getUserFromId(parseInt(this.$route.params.userId))"></UserForm>
+        </content-header>
+        <user-form :user="getUserFromId(parseInt(this.$route.params.userId))"></user-form>
     </div>
 </template>
 

@@ -33,6 +33,9 @@
                     <label class="form-check-label" for="is_available-field">Est disponible&nbsp;: </label>
                 </div>
 
+                <student-projects-list v-if="$route.name === 'StudentEdit'"></student-projects-list>
+
+
                 <div>
                     <button class="mr-2 mt-3 btn btn-primary">Enregistrer
                         <font-awesome-icon v-if="formStatus === 'success'" icon="thumbs-up" class="ml-1" />
@@ -53,12 +56,16 @@
 
 <script>
     import {mapActions, mapState} from 'vuex';
+    import StudentProjectsList from './StudentProjectsList';
 
     export default {
+        components:{
+            StudentProjectsList,
+        },
         data(){
             return{
                 studentForm:{
-                    id: this.student ? this.student.id : null,
+                    id: null,
                     name: null,
                     email: null,
                     phone: null,
@@ -68,15 +75,13 @@
                 errors: [],
             }
         },
-        props:[
-            'student'
-        ],
         computed:{
             ...mapState('global',[
                 'formStatus'
             ]),
             ...mapState('student',[
                 'students',
+                'studentToUpdate',
             ]),
         },
         methods:{
@@ -89,13 +94,7 @@
                 'addStudent',
             ]),
             formStatusSuccess(){
-                this.studentForm = {
-                    name: null,
-                    email: null,
-                    phone: null,
-                    bloc: null,
-                    is_available: 0,
-                };
+                this.$router.push({path:'/etudiants/' + this.studentToUpdate.id + '/modifier'});
             },
             formStatusError(){
                 this.errors.push('Erreur serveur, veuillez réessayer plus tard.');
@@ -127,8 +126,8 @@
                 if(!this.validEmail(this.studentForm.email)) {
                     this.errors.push('L&rsquo;email n&rsquo;est pas valide.');
 
-                }else if( this.student ) {
-                    if( this.studentForm.email !== this.student.email && this.students.filter(student => student.email === this.studentForm.email).length ) {
+                }else if( this.studentToUpdate ) {
+                    if( this.studentForm.email !== this.studentToUpdate.email && this.students.filter(student => student.email === this.studentForm.email).length ) {
                         this.errors.push('Email lié à un compte existant');
                     }
                 }else if( this.students.filter(student => student.email === this.studentForm.email).length ) {
@@ -141,23 +140,27 @@
                 }
 
                 if(!this.errors.length) {
-                    if(this.student){
+                    if(this.$route.name === 'StudentEdit'){
                         this.updateStudent(this.studentForm);
                     }else{
-                        this.addStudent(this.studentForm);
-                        this.checkFormStatusRepeater([this.formStatusSuccess, this.formStatusError]);
+                        this.addStudent(this.studentForm)
+                            .then(()=>{
+                                this.checkFormStatusRepeater([this.formStatusSuccess, this.formStatusError]);
+                            });
                     }
                 }
             }  
         },
-        mounted(){
+        beforeMount(){
             this.editFormStatus('');
-            if(this.student){
-                this.studentForm.name = this.student.name;
-                this.studentForm.email = this.student.email;
-                this.studentForm.phone = this.student.phone;
-                this.studentForm.bloc = this.student.bloc;
-                this.studentForm.is_available = this.student.is_available;
+
+            if(this.$route.name === 'StudentEdit'){
+                this.studentForm.id = this.studentToUpdate.id;
+                this.studentForm.name = this.studentToUpdate.name;
+                this.studentForm.email = this.studentToUpdate.email;
+                this.studentForm.phone = this.studentToUpdate.phone;
+                this.studentForm.bloc = this.studentToUpdate.bloc;
+                this.studentForm.is_available = this.studentToUpdate.is_available;
             }
         }
     }

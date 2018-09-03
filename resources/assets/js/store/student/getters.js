@@ -13,6 +13,11 @@ const getters = {
     getUnavailableB3: state => state.students.filter(student => student.bloc === 3 && !student.is_available),
 
     getStudentFromId: state => studentId => state.students.find(student => student.id === studentId),
+
+    getStudentProjectFromId: state => (studentId, projectId) => {
+        const studentProjects = state.students.find(student => student.id === studentId).projects;
+        return studentProjects.find(project => project.pivot.id === projectId) ;
+    },
 };
 
 export default getters;

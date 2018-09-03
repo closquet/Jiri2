@@ -1,11 +1,11 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Projet {{ getProjectFromId(parseInt(this.$route.params.projectId)).name }}
             </template>
-        </Content-header>
-        <ProjectForm :project="getProjectFromId(parseInt(this.$route.params.projectId))"></ProjectForm>
+        </content-header>
+        <project-form :project="getProjectFromId(parseInt(this.$route.params.projectId))"></project-form>
     </div>
 </template>
 

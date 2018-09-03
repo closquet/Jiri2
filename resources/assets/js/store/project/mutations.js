@@ -4,9 +4,10 @@ const mutations = {
     },
 
     UPDATE_PROJECT: (state, newProjectContent) => {
-        state.projects.find(project => project.id === newProjectContent.id).name = newProjectContent.name;
-        state.projects.find(project => project.id === newProjectContent.id).description = newProjectContent.description;
-        state.projects.find(project => project.id === newProjectContent.id).bloc = newProjectContent.bloc;
+        const project = state.projects.find(project => project.id === newProjectContent.id);
+        project.name = newProjectContent.name;
+        project.description = newProjectContent.description;
+        project.bloc = newProjectContent.bloc;
     },
 
     ADD_PROJECT: (state, {id, name, description, bloc}) => {

@@ -2,22 +2,22 @@
     <div class="container site-content">
         <content-header>
             <template slot="title">
-                Profile de {{studentToUpdate.name}}
+                Modifier le projet
             </template>
         </content-header>
-        <student-form></student-form>
+        <student-project-form></student-project-form>
     </div>
 </template>
 
 <script>
     import ContentHeader from '../../common/contentHeader/ContentHeader';
-    import StudentForm from './parts/StudentForm';
+    import StudentProjectForm from './parts/StudentProjectForm';
     import {mapGetters, mapActions, mapState} from 'vuex';
 
     export default {
         components:{
             ContentHeader,
-            StudentForm,
+            StudentProjectForm,
         },
         computed:{
             ...mapGetters('student', [

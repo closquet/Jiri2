@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label for="password_confirmation-field">Confirmer mot de pass&nbsp;: </label>
                     <input class="form-control" v-model="userForm.password_confirmation" minlength="6" aria-describedby="password_confirmationHelp" type="password" name="password_confirmation" placeholder="secret" id="password_confirmation-field">
-                    <small v-if="!user" id="password_confirmationHelp" class="form-text text-muted"><i>Champ requis.</i></small>
+                    <small v-if="$route.name !== 'UserEdit'" id="password_confirmationHelp" class="form-text text-muted"><i>Champ requis.</i></small>
                 </div>
 
                 <div class="form-check">
@@ -76,7 +76,7 @@
         data(){
             return{
                 userForm:{
-                    id: this.user ? this.user.id : null,
+                    id: null,
                     name: null,
                     email: null,
                     phone: null,
@@ -144,7 +144,7 @@
                     this.errors.push('Veuillez entrer un nom correct.');
                 }
 
-                if( this.user ) {
+                if( this.$route.name === 'UserEdit' ) {
                     if(this.userForm.password !== this.userForm.password_confirmation) {
                         this.errors.push('Les mots de passe ne correspondent pas.');
                     }
@@ -180,7 +180,7 @@
                 }
 
                 if(!this.errors.length) {
-                    if(this.user){
+                    if(this.$route.name === 'UserEdit'){
                         this.updateUser(this.userForm);
                     }else{
                         this.addUser(this.userForm);
@@ -191,7 +191,8 @@
         },
         mounted(){
             this.editFormStatus('');
-            if(this.user){
+            if(this.$route.name === 'UserEdit'){
+                this.userForm.id = this.user.id;
                 this.userForm.name = this.user.name;
                 this.userForm.email = this.user.email;
                 this.userForm.phone = this.user.phone;

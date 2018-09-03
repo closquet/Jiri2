@@ -1,6 +1,6 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Dashboard Jiri <small>Administrateur</small>
             </template>
@@ -13,9 +13,9 @@
                     Vous pouvez aussi <router-link class="" to="/meetings/créer">Lancer un meeting</router-link> avec un étudiant afin d'évaluer ses projets.
                 </p>
             </template>
-        </Content-header>
+        </content-header>
 
-        <Jury-control></Jury-control>
+        <jury-control></jury-control>
 
         <section class="mb-5" aria-labelledby="dashboard-summary-title">
             <h2 class="mb-3" id="dashboard-summary-title" role="heading" aria-level="2">

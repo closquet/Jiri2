@@ -1,6 +1,6 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Gestion des étudiants <router-link to="/etudiants/ajouter" class="btn btn-primary">Ajouter</router-link>
             </template>
@@ -9,7 +9,7 @@
                     Vous pouvez choisir de les afficher <router-link to="/etudiants">tous</router-link>, de n'afficher que les <router-link to="/etudiants/bloc2">Bloc 2</router-link>, ou encore, que les <router-link to="/etudiants/bloc3">Bloc 3</router-link>.
                 </p>
             </template>
-        </Content-header>
+        </content-header>
 
         <router-view></router-view>
     </div>

@@ -10,8 +10,8 @@ class Project extends Model
 		'name', 'bloc', 'description'
 	];
 	
-	public function student()
+	public function students()
 	{
-		return $this->belongsToMany( 'Jiri\Student')->withPivot('site_url', 'site_account', 'site_password', 'github_url', 'is_available')->withTimestamps();;
+		return $this->belongsToMany( 'Jiri\Student')->withPivot('id', 'site_url', 'site_account', 'site_password', 'github_url', 'is_available')->withTimestamps();
 	}
 }

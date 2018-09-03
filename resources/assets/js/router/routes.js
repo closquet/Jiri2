@@ -15,6 +15,8 @@ import AllGuestsList from '../components/views/admin/users/parts/AllGuestsList';
 import StudentsList from '../components/views/admin/students/StudentsList';
 import StudentEdit from '../components/views/admin/students/StudentEdit';
 import AddStudent from '../components/views/admin/students/AddStudent';
+import AddStudentProject from '../components/views/admin/students/AddStudentProject';
+import StudentProjectEdit from '../components/views/admin/students/StudentProjectEdit';
 import AllStudentsList from '../components/views/admin/students/parts/AllStudentsList';
 import AllB2StudentsList from '../components/views/admin/students/parts/AllB2StudentsList';
 import AllB3StudentsList from '../components/views/admin/students/parts/AllB3StudentsList';
@@ -29,7 +31,8 @@ import AllB3ProjectsList from '../components/views/admin/projects/parts/AllB3Pro
 const adminRoutes = [
     {
         path: '/home',
-        component: AdminHome
+        component: AdminHome,
+        name: 'AdminHome',
     },
     {
         path: '/utilisateurs',
@@ -37,25 +40,30 @@ const adminRoutes = [
         children: [
             {
                 path: '',
-                component: AllUsersList
+                component: AllUsersList,
+                name: 'AllUsersList',
             },
             {
                 path: 'professeurs',
-                component: AllTeachersList
+                component: AllTeachersList,
+                name: 'AllTeachersList',
             },
             {
                 path: 'guests',
-                component: AllGuestsList
+                component: AllGuestsList,
+                name: 'AllGuestsList',
             },
         ]
     },
     {
         path: '/utilisateurs/:userId/modifier',
-        component: UserEdit
+        component: UserEdit,
+        name: 'UserEdit',
     },
     {
         path: '/utilisateurs/ajouter',
-        component: AddUser
+        component: AddUser,
+        name: 'AddUser',
     },
 
     {
@@ -64,25 +72,40 @@ const adminRoutes = [
         children: [
             {
                 path: '',
-                component: AllStudentsList
+                component: AllStudentsList,
+                name: 'StudentsList',
             },
             {
                 path: 'bloc2',
-                component: AllB2StudentsList
+                component: AllB2StudentsList,
+                name: 'AllB2StudentsList',
             },
             {
                 path: 'bloc3',
-                component: AllB3StudentsList
+                component: AllB3StudentsList,
+                name: 'AllB3StudentsList',
             },
         ]
     },
     {
         path: '/etudiants/:studentId/modifier',
-        component: StudentEdit
+        component: StudentEdit,
+        name: 'StudentEdit',
+    },
+    {
+        path: '/etudiants/:studentId/projets/ajouter',
+        component: AddStudentProject,
+        name: 'AddStudentProject',
+    },
+    {
+        path: '/etudiants/:studentId/projets/:projectId/modifier',
+        component: StudentProjectEdit,
+        name: 'StudentProjectEdit'
     },
     {
         path: '/etudiants/ajouter',
-        component: AddStudent
+        component: AddStudent,
+        name: 'AddStudent',
     },
     {
         path: '/projets',
@@ -90,25 +113,30 @@ const adminRoutes = [
         children: [
             {
                 path: '',
-                component: AllProjectsList
+                component: AllProjectsList,
+                name: 'AllProjectsList',
             },
             {
                 path: 'bloc2',
-                component: AllB2ProjectsList
+                component: AllB2ProjectsList,
+                name: 'AllB2ProjectsList',
             },
             {
                 path: 'bloc3',
-                component: AllB3ProjectsList
+                component: AllB3ProjectsList,
+                name: 'AllB3ProjectsList',
             },
         ]
     },
     {
         path: '/projets/:projectId/modifier',
-        component: ProjectEdit
+        component: ProjectEdit,
+        name: 'ProjectEdit',
     },
     {
         path: '/projets/ajouter',
-        component: AddProject
+        component: AddProject,
+        name: 'AddProject',
     },
 ];
 
@@ -119,7 +147,8 @@ import GuestHome from '../components/views/guest/guestHome/GuestHome';
 const guestRoutes = [
     {
         path: '/home',
-            component: GuestHome
+        component: GuestHome,
+        name: 'GuestHome',
     },
 ];
 

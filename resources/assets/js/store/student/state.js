@@ -1,8 +1,6 @@
 const state = {
-    students:[],
-    // projectsTypes:[],
-    // studentsProjects:[]
-    // studentsProjectsScores:[]
+    students: [],
+    studentToUpdate: null
 };
 
 export default state;

@@ -1,11 +1,11 @@
 <template>
     <div class="container site-content">
-        <Content-header>
+        <content-header>
             <template slot="title">
                 Nouvel utilisateur
             </template>
-        </Content-header>
-        <UserForm></UserForm>
+        </content-header>
+        <user-form></user-form>
     </div>
 </template>
 

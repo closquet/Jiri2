@@ -2,21 +2,21 @@
     <div class="container site-content">
         <content-header>
             <template slot="title">
-                Nouvel étudiant
+                Ajouter un projet à l'étudiant
             </template>
         </content-header>
-        <student-form></student-form>
+        <student-project-form></student-project-form>
     </div>
 </template>
 
 <script>
     import ContentHeader from '../../common/contentHeader/ContentHeader';
-    import StudentForm from './parts/StudentForm';
+    import StudentProjectForm from './parts/StudentProjectForm';
 
     export default {
         components:{
             ContentHeader,
-            StudentForm,
-        },
+            StudentProjectForm,
+        }
     }
 </script>

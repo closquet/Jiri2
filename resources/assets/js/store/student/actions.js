@@ -8,6 +8,14 @@ const actions = {
         });
     },
 
+    storeStudentToUpdate: ({commit}, student) => {
+        commit('STORE_STUDENT_TO_UPDATE', student);
+    },
+
+    clearStudentToUpdate: ({commit}) => {
+        commit('CLEAR_STUDENT_TO_UPDATE');
+    },
+
     disableStudent: ({commit}, studentId) => {
         api.disableStudent( studentId,  (status) => {
             if(status === 200){
@@ -29,11 +37,11 @@ const actions = {
         });
     },
 
-    updateStudent: ({commit}, studentContent) => {
+    updateStudent: ({commit}, student) => {
         store.dispatch('global/editFormStatus','loading');
-        api.updateStudent( studentContent,  (status) => {
+        api.updateStudent( student,  (status) => {
             if(status === 200){
-                commit('UPDATE_STUDENT', studentContent);
+                commit('UPDATE_STUDENT', student);
                 store.dispatch('global/editFormStatus','success');
             }else{
                 console.log('Action : Update student error: ' + status);
@@ -42,10 +50,11 @@ const actions = {
         });
     },
 
-    addStudent: ({commit}, studentContent) => {
+    addStudent: ({commit}, student) => {
         store.dispatch('global/editFormStatus','loading');
-        api.addStudent( studentContent,  (response) => {
+        api.addStudent( student,  (response) => {
             if(response.status === 200){
+                commit('STORE_STUDENT_TO_UPDATE', response.data);
                 commit('ADD_STUDENT', response.data);
                 store.dispatch('global/editFormStatus','success');
             }else{
@@ -55,6 +64,31 @@ const actions = {
         });
     },
 
+    addStudentProject:({commit}, project) => {
+        store.dispatch('global/editFormStatus','loading');
+        api.addStudentProject( project,  (response) => {
+            if(response.status === 200){
+                commit('STORE_STUDENT_PROJECT', response.data);
+                store.dispatch('global/editFormStatus','success');
+            }else{
+                console.log('Action : Add studentProject error: ' + response);
+                store.dispatch('global/editFormStatus','error');
+            }
+        });
+    },
+
+    updateStudentProject:({commit}, project) => {
+        store.dispatch('global/editFormStatus','loading');
+        api.updateStudentProject( project,  (response) => {
+            if(response.status === 200){
+                commit('UPDATE_STUDENT_PROJECT', response.data);
+                store.dispatch('global/editFormStatus','success');
+            }else{
+                console.log('Action : Update studentProject error: ' + response);
+                store.dispatch('global/editFormStatus','error');
+            }
+        });
+    },
 };
 
 export default actions;

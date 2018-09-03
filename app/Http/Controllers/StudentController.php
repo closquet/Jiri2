@@ -15,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-	    return response(Student::all(), 200);
+    	$students = Student::with('projects')->get();
+	    return response($students, 200);
     }
 	
 	/**
@@ -73,7 +74,9 @@ class StudentController extends Controller
 	    $student->bloc = $request->bloc;
 	    $student->is_available = $request->is_available;
 	    $student->save();
-	    return response($student, 200);
+	    $response = Student::with('projects')->find($student->id);
+	    
+	    return response($response, 200);
     }
 
     /**

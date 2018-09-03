@@ -48,14 +48,12 @@
         data(){
             return{
                 projectForm:{
-                    id: this.project ? this.project.id : null,
+                    id: null,
                     name: null,
                     bloc: null,
                     description: null,
                 },
                 errors: [],
-                checkFormStatusRepeaterId: null,
-                checkFormStatusRepeaterTimer: 0,
             }
         },
         props:[
@@ -116,7 +114,7 @@
                 }
 
                 if(!this.errors.length) {
-                    if(this.project){
+                    if(this.$route.name === 'ProjectEdit'){
                         this.updateProject(this.projectForm);
                     }else{
                         this.addProject(this.projectForm);
@@ -127,7 +125,8 @@
         },
         mounted(){
             this.editFormStatus('');
-            if(this.project){
+            if(this.$route.name === 'ProjectEdit'){
+                this.projectForm.id = this.project.id;
                 this.projectForm.name = this.project.name;
                 this.projectForm.bloc = this.project.bloc;
                 this.projectForm.description = this.project.description;
